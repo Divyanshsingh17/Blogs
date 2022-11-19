@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: rgb(194, 183, 170);
+        }
+        h1{
+            color: rgb(117, 63, 63);
+            text-align: center;
+            font-size:3rem;
+            font-family: sans-serif;
+            font-weight: 700;
+        }
+
+        h2{
+            color: rgb(35, 37, 37);
+            text-align:start;
+            margin-left: 20px;
+            font-size:3rem;
+            font-family: sans-serif;
+            font-weight: 300;
+        }
+       
+        button{
+            width: 10rem;
+            height: 35px;
+            border-radius: 0.4rem;
+            background-color: white;
+        }
+        button>a{
+            text-decoration: none;
+            border-color: black;
+            border-width: 2px;
+            color: black;
+            cursor: pointer;
+        }
+        button>a:hover{
+            color:rgb(196, 11, 11)
+        }
+
+    </style>
+</head>
+<body>
+    <h1>My Blogs</h1>
+    <br><br>
+    <h2>Latest Posts</h2>
+    <hr>
+    
+    <div class="hero">
+        <div>
+            {% for post in post.all %}
+            <button><a href="{% url 'details' post.id %}">
+                <h3>{{ post.title }}</h3>
+            </a></button>
+            {{ post.publish_date }}
+            <br>
+            <img src="{{ post.image.url }}" height="200" width="200">
+            <br>
+            <p>{{ post.summary }}</p>
+            {%endfor%}
+        </div>
+    </div>
+    
+</body>
+</html>
